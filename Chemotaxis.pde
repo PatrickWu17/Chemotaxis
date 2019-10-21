@@ -1,13 +1,44 @@
- //declare bacteria variables here   
+Bacteria[] colony;
  void setup()   
  {     
- 	//initialize bacteria variables here   
+  size(500,500);
+  textAlign(CENTER);
+  colony = new Bacteria[7];
+  for(int i = 0; i < 7; i++){
+   colony[i] = new Bacteria(); 
+  }
  }   
  void draw()   
  {    
- 	//move and show the bacteria   
+   background(127);
+   for(int i = 0; i < colony.length; i++){
+    colony[i].move();
+    colony[i].show();
+   }
  }  
  class Bacteria    
  {     
- 	//lots of java!   
+ int myX, myY, myColor; 
+   Bacteria(){
+      myX = myY = 250;
+      myColor = color(0,0,255);
+   }
+  void move(){
+   if (mouseX > myX){
+     myX = myX + (int)(Math.random() * 7) - 1;
+   }else{
+     myX = myX + (int)(Math.random() * 7) - 4; 
+     
+   }  
+   if (mouseY > myY){
+     myY = myY + (int)(Math.random() * 7) - 1;
+   }else{
+     myY = myY + (int)(Math.random() * 7) - 4; 
+     
+   }  
+  }
+  void show(){
+   fill(100);
+   ellipse(myX,myY,25,25);
+  }
  }    
